@@ -1,0 +1,22 @@
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: fluentd-juicefs
+spec:
+  template:
+    spec:
+      containers:
+      - name: fluentd-juicefs
+        imagePullPolicy: Always
+        # command:
+        # - sh
+        # args:
+        # - -c
+        # - sleep 3600
+        envFrom:
+        - secretRef:
+            name: fluentd-juicefs
+images:
+- name: juicedata/fluentd-juicefs
+  newTag: dev
